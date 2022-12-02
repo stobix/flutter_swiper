@@ -64,7 +64,7 @@ class _InnerSwiperState extends State<InnerSwiper> {
                 ),
                 height: 300.0,
               ),
-              new RaisedButton(
+              new ElevatedButton(
                 onPressed: () {
                   setState(() {
                     autoplayes[index] = true;
@@ -72,7 +72,7 @@ class _InnerSwiperState extends State<InnerSwiper> {
                 },
                 child: new Text("Start autoplay"),
               ),
-              new RaisedButton(
+              new ElevatedButton(
                 onPressed: () {
                   setState(() {
                     autoplayes[index] = false;
