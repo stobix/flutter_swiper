@@ -73,7 +73,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
   @override
   void dispose() {
     widget.controller?.removeListener(_onController);
-    _animationController?.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -125,7 +125,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
 
   bool _lockScroll = false;
 
-  void _move(double position, {int? nextIndex = null}) async {
+  void _move(double position, {int? nextIndex}) async {
     if (_lockScroll) return;
     try {
       _lockScroll = true;
@@ -144,8 +144,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
         } catch (e) {
           print(e);
         }
-
-        _currentIndex = nextIndex!;
+        _currentIndex = nextIndex;
       }
       _lockScroll = false;
     }
@@ -374,7 +373,6 @@ class _CustomLayoutSwiper extends _SubSwiper {
     required super.loop,
     required super.itemHeight,
     required super.onIndexChanged,
-    super.key,
     required super.itemBuilder,
     required super.curve,
     required super.duration,

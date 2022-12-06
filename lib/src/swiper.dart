@@ -1,6 +1,5 @@
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_swiper/src/scale_and_fade_transformer.dart';
@@ -404,7 +403,7 @@ class _SwiperState extends _SwiperTimerMixin {
   }
 
   bool _isPageViewLayout() {
-    return widget.layout == null || widget.layout == SwiperLayout.DEFAULT;
+    return widget.layout == SwiperLayout.DEFAULT;
   }
 
   @override
@@ -649,7 +648,6 @@ abstract class _SubSwiper extends StatefulWidget {
   final Axis scrollDirection;
 
   _SubSwiper({
-    super.key,
     this.loop,
     this.itemHeight,
     this.itemWidth,
@@ -681,7 +679,6 @@ class _TinderSwiper extends _SubSwiper {
   final double itemWidth;
 
   _TinderSwiper({
-    super.key,
     super.curve,
     super.duration,
     super.controller,
@@ -709,7 +706,6 @@ class _StackSwiper extends _SubSwiper {
   final double itemWidth;
 
   _StackSwiper({
-    super.key,
     super.curve,
     super.duration,
     super.controller,
@@ -799,8 +795,8 @@ class _TinderState extends _CustomLayoutStateBase<_TinderSwiper> {
             scale: s,
             alignment: alignment,
             child: new SizedBox(
-              width: widget.itemWidth ?? double.infinity,
-              height: widget.itemHeight ?? double.infinity,
+              width: widget.itemWidth,
+              height: widget.itemHeight,
               child: widget.itemBuilder(context, realIndex),
             ),
           ),
@@ -873,8 +869,8 @@ class _StackViewState extends _CustomLayoutStateBase<_StackSwiper> {
           scale: s,
           alignment: alignment,
           child: new SizedBox(
-            width: widget.itemWidth ?? double.infinity,
-            height: widget.itemHeight ?? double.infinity,
+            width: widget.itemWidth,
+            height: widget.itemHeight,
             child: widget.itemBuilder(context, realIndex),
           ),
         ),
