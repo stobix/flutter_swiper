@@ -1,4 +1,3 @@
-// @dart = 2.17
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 

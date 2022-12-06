@@ -1,5 +1,3 @@
-// @dart = 2.17
-
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -33,7 +31,7 @@ class SwiperControl extends SwiperPlugin {
       this.size: 30.0,
       this.padding: const EdgeInsets.all(5.0)});
 
-  Widget buildButton(SwiperPluginConfig config, Color color, IconData iconDaga,
+  Widget buildButton(SwiperPluginConfig config, Color color, IconData iconData,
       int quarterTurns, bool previous) {
     return new GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -49,7 +47,7 @@ class SwiperControl extends SwiperPlugin {
           child: RotatedBox(
               quarterTurns: quarterTurns,
               child: Icon(
-                iconDaga,
+                iconData,
                 semanticLabel: previous ? "Previous" : "Next",
                 size: size,
                 color: color,

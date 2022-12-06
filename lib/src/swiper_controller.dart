@@ -1,5 +1,3 @@
-// @dart = 2.17
-
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:flutter_swiper/src/swiper_plugin.dart';
 

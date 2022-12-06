@@ -1,5 +1,3 @@
-// @dart = 2.17
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -32,7 +30,7 @@ class SwiperPluginConfig {
     required this.controller,
     this.pageController,
     this.layout,
-    required this.loop
+    this.loop = false,
   });
 }
 

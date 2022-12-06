@@ -1,4 +1,3 @@
-// @dart = 2.17
 part of 'swiper.dart';
 
 abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
