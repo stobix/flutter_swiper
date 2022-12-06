@@ -1,3 +1,4 @@
+// @dart = 2.17
 import 'package:flutter/material.dart';
 import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -12,38 +13,26 @@ class ExampleCustom extends StatefulWidget {
 }
 
 class _ExampleCustomState extends State<ExampleCustom> {
-  //properties want to custom
-  int _itemCount;
+  //properties we want to custom
 
-  bool _loop;
+  double _fade = 1.0;
+  int _currentIndex = 0;
+  Curve _curve = Curves.ease;
+  double _scale = 0.8;
+  late SwiperController _controller;
+  SwiperLayout _layout = SwiperLayout.TINDER;
+  double _radius = 10.0;
+  double _padding = 0.0;
+  bool _loop = true;
+  int _itemCount = 3;
+  bool _autoplay = false;
+  int _autoplayDely = 3000;
+  double _viewportFraction = 0.8;
+  bool _outer = false;
+  Axis _scrollDirection = Axis.horizontal;
+  bool _autoplayDisableOnInteraction = false;
 
-  bool _autoplay;
-
-  int _autoplayDely;
-
-  double _padding;
-
-  bool _outer;
-
-  double _radius;
-
-  double _viewportFraction;
-
-  SwiperLayout _layout;
-
-  int _currentIndex;
-
-  double _scale;
-
-  Axis _scrollDirection;
-
-  Curve _curve;
-
-  double _fade;
-
-  bool _autoplayDisableOnInteraction;
-
-  CustomLayoutOption customLayoutOption;
+  late CustomLayoutOption customLayoutOption;
 
   Widget _buildItem(BuildContext context, int index) {
     return ClipRRect(
@@ -138,7 +127,6 @@ class _ExampleCustomState extends State<ExampleCustom> {
     );
   }
 
-  SwiperController _controller;
   TextEditingController numberController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -186,13 +174,13 @@ class _ExampleCustomState extends State<ExampleCustom> {
               child: new FormSelect(
                   placeholder: "Select layout",
                   value: _layout,
-                  values: [
+                  values: <SwiperLayout>[
                     SwiperLayout.DEFAULT,
                     SwiperLayout.STACK,
                     SwiperLayout.TINDER,
                     SwiperLayout.CUSTOM
                   ],
-                  valueChanged: (value) {
+                  valueChanged: (SwiperLayout value) {
                     _layout = value;
                     setState(() {});
                   })),
@@ -314,9 +302,9 @@ class _ExampleCustomState extends State<ExampleCustom> {
 
           new FormWidget(
               label: "curve",
-              child: new FormSelect(
+              child: new FormSelect<Curve>(
                   placeholder: "Select curve",
-                  value: _layout,
+                  value: _curve,
                   values: [
                     Curves.easeInOut,
                     Curves.ease,
@@ -325,7 +313,7 @@ class _ExampleCustomState extends State<ExampleCustom> {
                     Curves.bounceIn,
                     Curves.fastOutSlowIn
                   ],
-                  valueChanged: (value) {
+                  valueChanged: (Curve value) {
                     _curve = value;
                     setState(() {});
                   })),

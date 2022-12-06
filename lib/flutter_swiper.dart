@@ -1,3 +1,5 @@
+// @dart = 2.17
+
 library flutter_swiper;
 
 export 'src/swiper.dart';

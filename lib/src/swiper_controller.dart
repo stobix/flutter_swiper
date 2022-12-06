@@ -1,5 +1,7 @@
+// @dart = 2.17
+
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:flutter_swiper/src/swiper_plugin.dart';
-import 'package:transformer_page_view/transformer_page_view.dart';
 
 class SwiperController extends IndexController {
   // Autoplay is started
@@ -16,15 +18,15 @@ class SwiperController extends IndexController {
   static const int BUILD = 5;
 
   // available when `event` == SwiperController.BUILD
-  SwiperPluginConfig config;
+  SwiperPluginConfig? config;
 
   // available when `event` == SwiperController.SWIPE
   // this value is PageViewController.pos
-  double pos;
+  double? pos;
 
-  int index;
-  bool animation;
-  bool autoplay;
+  late int? index;
+  late bool animation;
+  bool? autoplay;
 
   SwiperController();
 

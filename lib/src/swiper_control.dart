@@ -1,3 +1,5 @@
+// @dart = 2.17
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -12,15 +14,15 @@ class SwiperControl extends SwiperPlugin {
   final double size;
 
   ///Icon normal color, The theme's [ThemeData.primaryColor] by default.
-  final Color color;
+  final Color? color;
 
   ///if set loop=false on Swiper, this color will be used when swiper goto the last slide.
   ///The theme's [ThemeData.disabledColor] by default.
-  final Color disableColor;
+  final Color? disableColor;
 
   final EdgeInsetsGeometry padding;
 
-  final Key key;
+  final Key? key;
 
   const SwiperControl(
       {this.iconPrevious: Icons.arrow_back_ios,

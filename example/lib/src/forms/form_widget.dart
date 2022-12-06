@@ -1,3 +1,4 @@
+// @dart = 2.17
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -6,7 +7,7 @@ class FormWidget extends StatelessWidget {
 
   final Widget child;
 
-  FormWidget({this.label, this.child});
+  FormWidget({required this.label, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +27,18 @@ class FormWidget extends StatelessWidget {
 class FormSelect<T> extends StatefulWidget {
   final String placeholder;
   final ValueChanged<T> valueChanged;
-  final List<dynamic> values;
-  final dynamic value;
+  final List<T> values;
+  final T value;
 
-  FormSelect({this.placeholder, this.valueChanged, this.value, this.values});
+  FormSelect({required this.placeholder, required this.valueChanged, required this.value, required this.values});
 
   @override
   State<StatefulWidget> createState() {
-    return _FormSelectState();
+    return _FormSelectState<T>();
   }
 }
 
-class _FormSelectState extends State<FormSelect> {
+class _FormSelectState<T> extends State<FormSelect<T>> {
   int _selectedIndex = 0;
 
   @override
@@ -88,8 +89,7 @@ class _FormSelectState extends State<FormSelect> {
                         child: new ElevatedButton(
                           onPressed: () {
                             if (_selectedIndex >= 0) {
-                              widget
-                                  .valueChanged(widget.values[_selectedIndex]);
+                              widget.valueChanged(widget.values[_selectedIndex]);
                             }
 
                             setState(() {});
@@ -116,7 +116,7 @@ class NumberPad extends StatelessWidget {
   final num min;
   final ValueChanged<num> onChangeValue;
 
-  NumberPad({this.number, this.step, this.onChangeValue, this.max, this.min});
+  NumberPad({required this.number, required this.step, required this.onChangeValue, required this.max, required this.min});
 
   void onAdd() {
     onChangeValue(number + step > max ? max : number + step);

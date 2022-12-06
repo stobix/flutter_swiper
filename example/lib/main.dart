@@ -1,3 +1,4 @@
+// @dart = 2.17
 import 'package:flutter/material.dart';
 import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 
@@ -6,7 +7,6 @@ import 'src/ExampleCustom.dart';
 import 'src/config.dart';
 import 'src/ExampleSwiperInScrollView.dart';
 
-import 'package:flutter/cupertino.dart';
 
 void main() => runApp(new MyApp());
 
@@ -22,15 +22,15 @@ class MyApp extends StatelessWidget {
       home: new MyHomePage(title: 'Flutter Swiper'),
       //home: buildHome(),
       routes: {
-        '/example01': (BuildContext context) => new ExampleHorizontal(),
-        '/example02': (BuildContext context) => new ExampleVertical(),
-        '/example03': (BuildContext context) => new ExampleFraction(),
-        '/example04': (BuildContext context) => new ExampleCustomPagination(),
-        '/example05': (BuildContext context) => new ExamplePhone(),
-        '/example06': (BuildContext context) => new ScaffoldWidget(
-            child: new ExampleSwiperInScrollView(), title: "ScrollView"),
-        '/example07': (BuildContext context) => new ScaffoldWidget(
-              child: new ExampleCustom(),
+        '/example01': (BuildContext context) => ExampleHorizontal(),
+        '/example02': (BuildContext context) => ExampleVertical(),
+        '/example03': (BuildContext context) => ExampleFraction(),
+        '/example04': (BuildContext context) => ExampleCustomPagination(),
+        '/example05': (BuildContext context) => ExamplePhone(),
+        '/example06': (BuildContext context) => ScaffoldWidget(
+            child: ExampleSwiperInScrollView(), title: "ScrollView"),
+        '/example07': (BuildContext context) => ScaffoldWidget(
+              child: ExampleCustom(),
               title: "Custom All",
             )
       },
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -322,13 +322,13 @@ class ScaffoldWidget extends StatelessWidget {
   final String title;
   final List<Widget> actions;
 
-  ScaffoldWidget({this.child, this.title, this.actions});
+  ScaffoldWidget({required this.child, required this.title, this.actions = const []});
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(title),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
         actions: actions,
       ),
       body: child,
